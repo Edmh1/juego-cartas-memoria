@@ -63,3 +63,7 @@ body{
 #img-game{
     margin-right: 30px;
 }
+
+#grid{
+    display: grid;
+}

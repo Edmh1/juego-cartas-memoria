@@ -15,11 +15,11 @@
                     y no selecciones mas 2 cartas, cuando termines puedes volver a comenzar con una baraja distinta.</p>
                 <form id="game-form">
                     <select name="dropdown-dif" id="dif">
-                        <option value="4x4">Facil</option>
-                        <option value="5x4">Medio</option>
-                        <option value="6x4">Dificil</option>
+                        <option value="4">Facil</option>
+                        <option value="5">Medio</option>
+                        <option value="6">Dificil</option>
                     </select>
-                    <button id="btn-play">Jugar</button>
+                    <button type="button" id="btn-play" >Jugar</button>
                 </form>
             </div>
             <div id="cont-img-game">
@@ -27,9 +27,11 @@
             </div>
         </section>
         <section id="game">
+            <div id="grid" class="grid-container"></div>
             <!-- Se insertan los contenedores de las cartas dinamicamente desde el js-->
         </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>
