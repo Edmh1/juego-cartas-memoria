@@ -4,8 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego Memoria Cartas</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
+    <main>
+        <section id="information">
+            <div id="info">
+                <h3>Memoria de Cartas</h3>
+                <p>Memoriza las cartas y ve armando pares para ganar el puzzle.Ten un poco de paciencia 
+                    y no selecciones mas 2 cartas, cuando termines puedes volver a comenzar con una baraja distinta.</p>
+                <form id="game-form">
+                    <select name="difficulty" id="dif">
+                        <option value="4x4">Facil</option>
+                        <option value="5x4">Medio</option>
+                        <option value="6x4">Dificil</option>
+                    </select>
+                    <button id="btn-play">Jugar</button>
+                </form>
+            </div>
+            <div id="img-game">
+                <img src="assets/img/img-juego.png" alt="Imagen del juego">
+            </div>
+        </section>
+        <section id="game">
+            <!-- Se insertan los contenedores de las cartas dinamicamente desde el js-->
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

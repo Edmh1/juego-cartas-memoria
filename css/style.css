@@ -1,0 +1,33 @@
+/*Reset Basico*/
+/*------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+	font-family: 'Roboto',sans-serif;
+}
+
+/*Configuraciones Basicas*/
+/*------------------*/
+body{
+    display: flex;
+    min-height: 100vh;
+    background-color: #B3E5FC;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Sección de información*/
+/*------------------*/
+#information{
+    display: flex;
+    margin: auto;
+    height: auto;
+    width: 70%;
+    color: white;
+    background-color: #FF4081;
+}
+
+#info h3, #info p{
+    margin: 15px;
+}
