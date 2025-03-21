@@ -21,13 +21,45 @@ body{
 /*------------------*/
 #information{
     display: flex;
+    align-items: center;
     margin: auto;
-    height: auto;
-    width: 70%;
+    height: 65vh;
+    width: 65%;
     color: white;
     background-color: #FF4081;
+    padding: 3rem;
+}
+
+
+#dif, #btn-play{
+    text-align: center;
+    width: 150px;
+    height: 50px;
+    color: white;
+    border-radius: 5px;
+    background-color: #6A1B4D;  
+}
+
+#btn-play{
+    margin-left: 30px;
+}
+
+#info, #cont-img-game{
+    width: 50%;
 }
 
 #info h3, #info p{
-    margin: 15px;
+    margin-bottom: 30px;
+}
+
+#cont-img-game{
+    display: flex;
+    justify-content: end;
+}
+#info{
+    margin-left: 30px;
+}
+
+#img-game{
+    margin-right: 30px;
 }
