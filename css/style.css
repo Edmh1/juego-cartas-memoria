@@ -12,7 +12,7 @@
 body{
     display: flex;
     min-height: 100vh;
-    background-color: #B3E5FC;
+    background-color: #2D3E40;
     justify-content: center;
     align-items: center;
 }
@@ -25,23 +25,68 @@ body{
     margin: auto;
     height: 65vh;
     width: 65%;
-    color: white;
-    background-color: #FF4081;
+    color: #E4F2E7;
+    background-color: #387373;
     padding: 3rem;
+    border-radius: 10px;
 }
 
+#info h3{
+    font-size: 3rem;
+    margin-bottom: 0.2rem;
+}
+
+#info p{
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+#game-form{
+    display:flex;
+}
 
 #dif, #btn-play{
     text-align: center;
     width: 150px;
     height: 50px;
-    color: white;
+    color: #E4F2E7;
     border-radius: 5px;
-    background-color: #6A1B4D;  
+    background-color: #2D3E40;  
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+#dif{
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease; 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="white"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 15px;
+    padding-right: 30px;
+    appearance: none;
+}
+
+option{
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
 }
 
 #btn-play{
     margin-left: 30px;
+    outline: none;
+    cursor: pointer;
+    border:none;
+    transition: all 0.3s ease; 
+}
+
+#btn-play:hover{
+    background-color: #E4F2E7;
+    color: #2D3E40;
 }
 
 #info, #cont-img-game{
@@ -54,16 +99,209 @@ body{
 
 #cont-img-game{
     display: flex;
-    justify-content: end;
+    margin: auto;
+    width: 35%;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
 }
 #info{
     margin-left: 30px;
 }
 
-#img-game{
-    margin-right: 30px;
+#grid {
+    display: grid; 
+    gap:0.7em;
+    padding: 1em; 
 }
 
-#grid{
-    display: grid;
+.card-item{
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease-in-out;
+    backface-visibility: hidden;
+    background-image: url("../assets/img/question-mark.svg");
+    background-size: 80px;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 120px;
+    background-color: #93BFB7;
+    color: white;
+    font-size: 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.card-item:hover{
+    background-color: #97A6A0;
+    -webkit-box-shadow: 0px 0px 10px 3px rgba(255, 255, 255, 0.3);
+    -moz-box-shadow: 0px 0px 10px 3px rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 0px 10px 3px rgba(255, 255, 255, 0.3);
+}
+
+.emoji {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    display: none;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
+.flipped {
+    background-color: #f1f7f2;
+    transform: rotateY(180deg);
+}
+
+.flipped .emoji {
+    display: block;
+    background-color: #f1f7f2;
+    width: 200px;
+    height: 120px;
+    border-radius: 5px;
+}
+
+.swal-confirm-button{
+    background-color: #2D3E40;
+}
+
+.swal-deny-button{
+    background-color: #93BFB7;
+    color:#2D3E40;
+}
+
+@media screen and (max-width: 760px) {
+    body {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    #information {
+        width: 90%;
+        height: auto;
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    #info, #cont-img-game {
+        width: 100%;
+        margin: 0;
+    }
+
+    #info h3{
+        font-size: 2.5rem;
+    }
+
+    #info p{
+        font-size: 1rem;
+    }
+
+    #game-form {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    option{
+        font-size: 0.8em;
+    }
+
+    #dif, #btn-play {
+        width: 100%;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+
+    #img-game{
+        width: 260px;
+        height: 300px;
+    }
+
+    #btn-play{
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+
+    .card-item {
+        width: 80px;
+        height: 80px;
+        font-size: 1.5rem;
+        background-size: 50px;
+    }
+
+    .flipped .emoji {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+
+.scale-out-center {
+	-webkit-animation: scale-out-center 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	        animation: scale-out-center 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+.scale-in-center {
+	-webkit-animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes scale-out-center {
+    0% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scale(0);
+              transform: scale(0);
+      opacity: 1;
+    }
+}
+
+@keyframes scale-out-center {
+    0% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scale(0);
+              transform: scale(0);
+      opacity: 1;
+    }
+}
+
+@-webkit-keyframes scale-in-center {
+    0% {
+      -webkit-transform: scale(0);
+              transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      opacity: 1;
+    }
+}
+
+@keyframes scale-in-center {
+    0% {
+      -webkit-transform: scale(0);
+              transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      opacity: 1;
+    }
 }
