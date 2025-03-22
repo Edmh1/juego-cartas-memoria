@@ -9,12 +9,9 @@ const grid = document.getElementById("grid");
 const emojis = ["🍎", "🍌", "🍇", "🍉", "🍒", "🍋", "🍍", "🥝", "🥑", "🍆", "🥕", "🌶"]; 
 
 btnPlay.addEventListener("click", play);
-selDifficulty.addEventListener("change", checkScreenOrientation); // Detectar cambios en la dificultad
 
 function play() {
     setGrid();
-    checkScreenOrientation(); // Verificar si se debe girar la pantalla
-
     secInformation.classList.add("scale-out-center");
 
     setTimeout(() => {
@@ -98,15 +95,15 @@ function checkMatch() {
         Swal.fire({
             icon: "success",
             title: "¡Has encontrado todas las parejas!",
-            text: "Lo completaste con un total de " + moves + " movimientos.\n\n ¿Deseas reiniciar?",
+            text: "Lo completaste con un total de " + moves + " movimientos.\n ¿Deseas reiniciar?",
             showDenyButton: true,
             confirmButtonText: "Elegir dificultad",
             denyButtonText: "Reiniciar",
             background:"#E4F2E7",
             color:"#2D3E40",
             customClass: {
-                confirmButton: 'swal-confirm-button',
-                denyButton: 'swal-deny-button'
+                confirmButton: 'swal-confirm-button',  // Cambia el color del botón de confirmación
+                denyButton: 'swal-deny-button'       // Cambia el color del botón de denegación
             }
         }).then((result) => {
             if (result.isConfirmed) {
@@ -117,31 +114,19 @@ function checkMatch() {
         });
     }
 }
+function checkOrientation() {
+    if (window.innerHeight > window.innerWidth + 150) {
+        document.getElementById("rotate-device").style.display = "flex";
+    } else {
+        document.getElementById("rotate-device").style.display = "none";
+    }
+}
+window.addEventListener("resize", checkOrientation);
+window.addEventListener("load", checkOrientation);
 
 function reset(){
     moves = 0;
     flippedCards = [];
     matchedCards = 0;
     createBoard();
-}
-
-// Mostrar alerta si la pantalla es pequeña y la dificultad es normal o difícil
-function checkScreenOrientation() {
-    const difficulty = selDifficulty.value;
-    const screenWidth = window.innerWidth;
-    const screenHeight = window.innerHeight;
-
-    if (screenWidth < 700 && screenHeight > screenWidth && (difficulty === "5" || difficulty === "6")) {
-        Swal.fire({
-            icon: "warning",
-            title: "Gira tu dispositivo",
-            text: "Para una mejor experiencia, gira tu dispositivo a modo horizontal.",
-            background: "#E4F2E7",
-            color: "#2D3E40",
-            confirmButtonText: "Entendido",
-            customClass: {
-                confirmButton: 'swal-confirm-button'
-            }
-        });
-    }
 }
