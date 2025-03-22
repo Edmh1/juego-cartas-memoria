@@ -1,14 +1,23 @@
 var row, col, totalCards, moves = 0, matchedCards = 0;
 var flippedCards = [];
+var startGame = false;
+var timePlayed = [];
+var timerInterval;
 const secInformation = document.getElementById("information");
 const selDifficulty = document.getElementById("dif");
 const btnPlay = document.getElementById("btn-play");
 const secGame = document.getElementById("game");
 const grid = document.getElementById("grid");
+const time = document.getElementById("time");
+const hours = document.getElementById("hours");
+const minutes = document.getElementById("minutes");
+const seconds = document.getElementById("seconds");
+const miliseconds = document.getElementById("milliseconds");
 
-const emojis = ["🍎", "🍌", "🍇", "🍉", "🍒", "🍋", "🍍", "🥝", "🥑", "🍆", "🥕", "🌶"]; 
+const emojis = ["🍎", "🍌", "🍇", "🍉", "🍒", "🍋", "🍍", "🥝", "🥑", "🍆", "🥕", "🍑"]; 
 
 btnPlay.addEventListener("click", play);
+secGame.style.display = "none";
 
 function play() {
     setGrid();
@@ -21,11 +30,13 @@ function play() {
 
     setTimeout(() => {
         grid.classList.add("scale-in-center");
+        time.classList.add("scale-in-center");
         createBoard();
         secGame.style.display = "flex";
 
         setTimeout(() => {
             grid.classList.remove("scale-in-center");
+            time.classList.remove("scale-in-center");
         }, 500);
     }, 1100);
 }
@@ -66,7 +77,49 @@ function createBoard() {
     }
 }
 
+function startTimer(){
+    let startTime = Date.now();
+    timerInterval = setInterval(() => {
+        let elapsedTime = Date.now() - startTime;
+        let ms = elapsedTime % 1000;
+        let s = Math.floor((elapsedTime / 1000) % 60);
+        let m = Math.floor((elapsedTime / (1000 * 60)) % 60);
+        let h = Math.floor((elapsedTime / (1000 * 60 * 60)) % 24);
+
+        hours.textContent = String(h).padStart(2, '0');
+        minutes.textContent = String(m).padStart(2, '0');
+        seconds.textContent = String(s).padStart(2, '0');
+        miliseconds.textContent = String(ms).padStart(3, '0');
+    }, 10);
+    timerInterval = timerInterval;
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
+}
+
+function resetTimer() {
+    clearInterval(timerInterval);
+    hours.textContent = "00";
+    minutes.textContent = "00";
+    seconds.textContent = "00";
+    miliseconds.textContent = "000";
+}
+
+function getTimerValues() {
+    timePlayed.push(hours.textContent);
+    timePlayed.push(minutes.textContent);
+    timePlayed.push(seconds.textContent);
+    timePlayed.push(miliseconds.textContent);
+}
+
 function flipCard() {
+
+    if (!startGame) {
+        startGame = true;
+        startTimer();
+    }
+
     if (flippedCards.length < 2 && !this.classList.contains('flipped')) {
         this.classList.add('flipped');
         this.querySelector(".emoji").style.visibility = "visible";
@@ -92,10 +145,12 @@ function checkMatch() {
     flippedCards = [];
 
     if (matchedCards === totalCards) {
+        stopTimer();
+        getTimerValues();
         Swal.fire({
             icon: "success",
             title: "¡Has encontrado todas las parejas!",
-            text: "Lo completaste con un total de " + moves + " movimientos.\n ¿Deseas reiniciar?",
+            text: "Lo completaste con un total de " + moves + " movimientos y duraste " + timePlayed.join(":") + " en completarlo.\n¿Deseas reiniciar?",
             showDenyButton: true,
             confirmButtonText: "Elegir dificultad",
             denyButtonText: "Reiniciar",
@@ -128,5 +183,7 @@ function reset(){
     moves = 0;
     flippedCards = [];
     matchedCards = 0;
+    startGame = false;
+    resetTimer();
     createBoard();
 }

@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juego Memoria Cartas</title>
+    <title>Memory Card Game</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="./assets/img/brain-ico.svg" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.css">
 </head>
 <body>
     <div id="rotate-device">
@@ -34,6 +37,12 @@
             </div>
         </section>
         <section id="game">
+            <div id="time">
+                <span id="hours">00</span> :
+                <span id="minutes">00</span> :
+                <span id="seconds">00</span> ::
+                <span id="milliseconds">000</span>
+            </div>
             <div id="grid" class="grid-container"></div>
             <!-- Se insertan los contenedores de las cartas dinamicamente desde el js-->
         </section>
