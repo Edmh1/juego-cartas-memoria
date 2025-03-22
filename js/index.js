@@ -115,7 +115,7 @@ function checkMatch() {
     }
 }
 function checkOrientation() {
-    if (window.innerHeight > window.innerWidth + 150) {
+    if (window.innerHeight > window.innerWidth + 180) {
         document.getElementById("rotate-device").style.display = "flex";
     } else {
         document.getElementById("rotate-device").style.display = "none";

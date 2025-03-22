@@ -288,6 +288,57 @@ option{
     }
 }
 
+@media screen and (max-width: 900px) and (orientation: landscape) {
+    body {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    #information {
+        width: 95%;
+        height: auto;
+        flex-direction: row;
+        padding: 1rem;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #info {
+        width: 60%;
+        text-align: left;
+        font-size: 1rem;
+    }
+
+    #cont-img-game {
+        width: 30%;
+        display: flex;
+        justify-content: center;
+    }
+
+    #img-game {
+        max-width: 100%;
+        height: auto;
+    }
+
+    #game-form {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    #dif, #btn-play {
+        width: 100px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    #rotate-device {
+        display: none !important; /* Oculta el mensaje de rotación en horizontal */
+    }
+}
 
 .scale-out-center {
 	-webkit-animation: scale-out-center 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
